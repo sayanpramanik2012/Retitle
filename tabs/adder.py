@@ -59,6 +59,9 @@ def get_directory_path(entry_widget):
 
 def start_add(directory_entry, filter_option, prefix_entry, postfix_entry, prefix_checkbox_var, postfix_checkbox_var, console_text):
     directory_path = directory_entry.get()
+    if not directory_path or not os.path.isdir(directory_path):
+        append_to_console(console_text, "Invalid directory path!")
+        return
     add_prefix = prefix_checkbox_var.get()
     add_postfix = postfix_checkbox_var.get()
 
